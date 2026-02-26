@@ -1,7 +1,9 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes,permission_classes
 from rest_framework import status
 from .models import Customer, Vendor, Product, Category
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from .serializers import (
     CustomerSerializer,
     VendorSerializer,
@@ -10,9 +12,9 @@ from .serializers import (
 )
 
 
-
-
 @api_view(['GET', 'POST', 'DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def customer_list(request):
     if request.method == 'GET':
         customers = Customer.objects.all()
@@ -28,6 +30,8 @@ def customer_list(request):
 
 
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def customer_detail(request, pk):
     try:
         customer = Customer.objects.get(pk=pk)
@@ -60,6 +64,8 @@ def customer_detail(request, pk):
 
 
 @api_view(['GET', 'POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def vendor_list(request):
     if request.method == 'GET':
         vendors = Vendor.objects.all()
@@ -75,6 +81,8 @@ def vendor_list(request):
 
 
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def vendor_detail(request, pk):
     try:
         vendor = Vendor.objects.get(pk=pk)
@@ -107,6 +115,8 @@ def vendor_detail(request, pk):
 
 
 @api_view(['GET', 'POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def product_list(request):
     if request.method == 'GET':
         products = Product.objects.all()
@@ -122,6 +132,8 @@ def product_list(request):
 
 
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def product_detail(request, pk):
     try:
         product = Product.objects.get(pk=pk)
@@ -154,6 +166,8 @@ def product_detail(request, pk):
 
 
 @api_view(['GET', 'POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def category_list(request):
     if request.method == 'GET':
         categories = Category.objects.all()
@@ -169,6 +183,8 @@ def category_list(request):
 
 
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def category_detail(request, pk):
     try:
         category = Category.objects.get(pk=pk)

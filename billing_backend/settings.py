@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'core',
     'rest_framework_simplejwt.token_blacklist',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,10 @@ STATIC_URL = 'static/'
 from datetime import timedelta
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
