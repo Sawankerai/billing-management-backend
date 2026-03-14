@@ -98,4 +98,20 @@ Generate invoices automatically with product and tax calculation.
 
 💰 Payment Tracking
 
+---
+
+## 📷 API Screenshots
+
+### Login API (JWT Token)
+
+![Login API](screenshots/login_api.png)
+
+### Create Product API
+
+![Product API](screenshots/product_api.png)
+
+### Create Invoice API
+
+![Invoice API](screenshots/invoice_api.png)
+
 Track paid, unpaid, and partially paid invoices.
