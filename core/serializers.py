@@ -20,6 +20,10 @@ class VendorSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    is_low_stock    = serializers.ReadOnlyField()
+    is_out_of_stock = serializers.ReadOnlyField()
+    category_name   = serializers.CharField(source='category.name', read_only=True)
+
     class Meta:
-        model = Product
+        model  = Product
         fields = '__all__'
