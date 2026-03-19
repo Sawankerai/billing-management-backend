@@ -19,4 +19,5 @@ urlpatterns = [
     path('api/', include('invoice.urls')),
    path('api/batch/', include('inventory_batch.urls')),
    path('api/stock/', include('stock_adjustment.urls')),
+   path('api/inventory/', include('inventory_barcode.urls')),
 ]

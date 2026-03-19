@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'invoice',
     'inventory_batch',
     'stock_adjustment',
+    'inventory_barcode',
     
     
 ]
