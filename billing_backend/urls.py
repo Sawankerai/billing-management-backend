@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from core.views import CustomLoginView
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 urlpatterns = [
     # Admin site
@@ -20,4 +18,6 @@ urlpatterns = [
    path('api/batch/', include('inventory_batch.urls')),
    path('api/stock/', include('stock_adjustment.urls')),
    path('api/inventory/', include('inventory_barcode.urls')),
+   path('api/sales/', include('sales_orders.urls')),
+   path('api/credit-notes/', include('credit_note.urls')),
 ]
