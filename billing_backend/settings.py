@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'inventory_barcode',
     'sales_orders',
     'credit_note',
+    'accounts',
+    'transactions',
     
     
 ]
