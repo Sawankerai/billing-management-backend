@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'credit_note',
     'accounts',
     'transactions',
-    
+    'payments',
+    'refunds',
+    'trial_balance',
     
 ]
 

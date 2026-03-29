@@ -22,4 +22,7 @@ urlpatterns = [
    path('api/credit-notes/', include('credit_note.urls')),
    path('api/accounts/', include('accounts.urls')),
    path('api/transactions/', include('transactions.urls')),
+   path('api/payments/', include('payments.urls')),
+   path('api/refunds/', include('refunds.urls')),
+   path('api/trial-balance/', include('trial_balance.urls')),
 ]
