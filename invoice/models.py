@@ -21,7 +21,7 @@ class Invoice(models.Model):
 
     invoice_id = models.AutoField(primary_key=True)
 
-    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    customer = models.ForeignKey(Customer, on_delete=models.PROTECT, related_name='invoices')
 
     invoice_type = models.CharField(
         max_length=20,

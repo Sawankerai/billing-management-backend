@@ -40,6 +40,13 @@ INSTALLED_APPS = [
     'payments',
     'refunds',
     'trial_balance',
+    'profit_loss',
+    'ledger',
+    'expenses',
+    'categories',
+    'recurring_expenses',
+    'reports',
+    
     
 ]
 

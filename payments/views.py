@@ -8,7 +8,7 @@ from .models import Payment
 from .serializers import PaymentSerializer
 
 
-# --- List & Create ---
+
 @api_view(['GET', 'POST'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
