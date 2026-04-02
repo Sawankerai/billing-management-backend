@@ -1,117 +1,116 @@
-Billing Management Backend
+🚀 Billing Management Backend
 
-A powerful and scalable Billing Management Backend API built using Django & Django REST Framework.
-This system helps manage customers, vendors, invoices, payments, products, and reports efficiently.
+A powerful, scalable, and modular Billing Management Backend API built using Django & Django REST Framework.
 
-🚀 Features
-👤 Customer Management
-🏢 Vendor Management
-📦 Product Management
-🧾 Invoice Generation
-💳 Payment Tracking
-📊 Sales & Purchase Reports
+This system is designed to handle complete business accounting workflows, including invoices, inventory, payments, expenses, and financial reports.
+
+✨ Features
+👤 Customer & Account Management
+🏢 Vendor & Ledger Management
+📦 Inventory & Stock Management
+🧾 Invoice & Sales Orders
+💳 Payment & Transactions Tracking
+💸 Expenses & Recurring Expenses
+🔁 Refunds & Credit Notes
+📊 Financial Reports (P&L, Trial Balance)
 🔐 JWT Authentication
 🌐 RESTful APIs
 🛡️ Secure & Scalable Architecture
 
-Tech Stack
-
+🛠️ Tech Stack
 Backend Framework: Django
 API Framework: Django REST Framework
-Database: SQLite (default) / PostgreSQL (recommended for production)
+Database: SQLite (Default) / PostgreSQL (Recommended)
 Authentication: JWT (SimpleJWT)
 CORS Handling: django-cors-headers
 
 📁 Project Structure
-
-billing-management-backend/
+billing_backend/
 │
-├── core/                # Main Django project
-├── customers/           # Customer management app
-├── vendors/             # Vendor management app
-├── products/            # Product management app
-├── invoices/            # Invoice management app
-├── payments/            # Payment management app
+├── accounts/              # User & account management
+├── categories/            # Product/service categories
+├── core/                  # Main Django project settings
+├── credit_note/           # Credit note management
+├── expenses/              # Expense tracking
+├── inventory_barcode/     # Barcode-based inventory
+├── inventory_batch/       # Batch-wise inventory tracking
+├── invoice/               # Invoice management
+├── ledger/                # Ledger & accounting records
+├── payments/              # Payment tracking
+├── profit_loss/           # Profit & Loss reports
+├── recurring_expenses/    # Recurring expense automation
+├── refunds/               # Refund handling
+├── reports/               # Business reports
+├── sales_orders/          # Sales order management
+├── stock_adjustment/      # Stock corrections
+├── transactions/          # Financial transactions
+├── trial_balance/         # Trial balance reports
+│
+├── db.sqlite3
 ├── manage.py
-└── requirements.txt
+├── requirements.txt
+└── README.md  
 
 ⚙️ Installation Guide
 1️⃣ Clone the Repository
-
 git clone https://github.com/your-username/billing-management-backend.git
 cd billing-management-backend
 
-Activate virtual environment:
+2️⃣ Create Virtual Environment
+python -m venv venv
+Activate Environment
 
 Windows
-
 venv\Scripts\activate
 
 Mac/Linux
-
 source venv/bin/activate
+
 3️⃣ Install Dependencies
 pip install -r requirements.txt
+
 4️⃣ Apply Migrations
 python manage.py makemigrations
 python manage.py migrate
+
 5️⃣ Create Superuser
 python manage.py createsuperuser
+
 6️⃣ Run Server
 python manage.py runserver
 
-Server will start at:
-
+🌐 Server will start at:
 http://127.0.0.1:8000/
-🔑 Authentication
 
+🔐 Authentication (JWT)
 This project uses JWT Authentication.
-
-Get Token
+Get Access Token
 POST /api/token/
+
 Refresh Token
 POST /api/token/refresh/
 
-Include token in headers:
-
+Use Token in Header
 Authorization: Bearer <your_access_token>
+
 📡 Example API Endpoints
-Method	Endpoint	Description
-GET	/api/customers/	Get all customers
-POST	/api/customers/	Create new customer
-GET	/api/vendors/	Get all vendors
-POST	/api/invoices/	Create invoice
-GET	/api/products/	List products
+| Method | Endpoint       | Description      |
+| ------ | -------------- | ---------------- |
+| GET    | /api/accounts/ | Get all accounts |
+| POST   | /api/accounts/ | Create account   |
+| GET    | /api/invoice/  | Get invoices     |
+| POST   | /api/invoice/  | Create invoice   |
+| GET    | /api/payments/ | Payment records  |
+| POST   | /api/expenses/ | Add expense      |
+| GET    | /api/reports/  | Generate reports |
 
 📊 Core Modules Explained
-🧍 Customer Management
+👤 Accounts
+Manage users, customers, and business accounts.
+🗂️ Categories
+Organize products/services into categories.
+📦 Inventory Management
+Barcode tracking
+Batch-wise stock handling
+Stock adjustments
 
-Store customer details, contact info, and billing history.
-
-🏭 Vendor Management
-
-Manage supplier information and purchase records.
-
-🧾 Invoice Management
-
-Generate invoices automatically with product and tax calculation.
-
-💰 Payment Tracking
-
----
-
-## 📷 API Screenshots
-
-### Login API (JWT Token)
-
-![Login API](screenshots/login_api.png)
-
-### Create Product API
-
-![Product API](screenshots/product_api.png)
-
-### Create Invoice API
-
-![Invoice API](screenshots/invoice_api.png)
-
-Track paid, unpaid, and partially paid invoices.
