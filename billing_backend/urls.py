@@ -31,6 +31,11 @@ urlpatterns = [
    path('api/', include('categories.urls')),
    path('api/', include('recurring_expenses.urls')),
    path('api/reports/', include('reports.urls')),
+   path('api/gst/', include('gst.urls')),
+   path('api/hsn-sac/', include('hsn_sac.urls')),
+   path('api/gst/compliance/e-invoice/', include('e_invoice.urls')),
+   path('api/', include('ewaybill.urls')),
+   path('api/', include('returns_calendar.urls')),
   
 
 ] 

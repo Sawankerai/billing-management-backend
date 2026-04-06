@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     'categories',
     'recurring_expenses',
     'reports',
+    'gst',
+    'hsn_sac',
+    'e_invoice',
+    'ewaybill',
+    'returns_calendar',
+
     
     
 ]
