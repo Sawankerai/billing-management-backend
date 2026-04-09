@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     'e_invoice',
     'ewaybill',
     'returns_calendar',
+    'gst_ledger',
+    'itc_reconciliation',
+    'gst_report',
+    'sales_reports',
 
     
     

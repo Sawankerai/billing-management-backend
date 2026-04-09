@@ -36,6 +36,14 @@ urlpatterns = [
    path('api/gst/compliance/e-invoice/', include('e_invoice.urls')),
    path('api/', include('ewaybill.urls')),
    path('api/', include('returns_calendar.urls')),
+   path('api/gst/ledger/', include('gst_ledger.urls')),
+   path('api/gst/itc-reconciliation/', include('itc_reconciliation.urls')),
+   path('gst-report/', include('gst_report.urls')),
+    path('api/sales-reports/',     include('sales_reports.urls')),
+
+   
+
+
   
 
 ] 
