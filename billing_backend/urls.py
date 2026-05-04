@@ -39,11 +39,10 @@ urlpatterns = [
    path('api/gst/ledger/', include('gst_ledger.urls')),
    path('api/gst/itc-reconciliation/', include('itc_reconciliation.urls')),
    path('gst-report/', include('gst_report.urls')),
-    path('api/sales-reports/',     include('sales_reports.urls')),
+   path('api/sales-reports/',include('sales_reports.urls')),
+    path('api/purchase-report/', include('purchase_report.urls')),
+]
 
-   
+ 
 
 
-  
-
-] 

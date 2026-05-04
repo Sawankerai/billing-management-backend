@@ -9,4 +9,7 @@ urlpatterns = [
     path('<int:pk>/apply/',views.apply_payment,name='payment-apply'),
     path('<int:pk>/fail/',views.fail_payment,name='payment-fail'),
     path('<int:pk>/cancel/',views.cancel_payment,name='payment-cancel'),
+
+#----- New mapping endpoints----#
+ path('customers/<int:pk>/payments/', views.customer_payments, name='customer-payments'),
 ]

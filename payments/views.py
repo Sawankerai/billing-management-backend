@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.db.models import Q, Sum
+
+from invoice.serializers import InvoiceSerializer
 from .models import Payment
 from .serializers import PaymentSerializer
 
@@ -177,4 +179,14 @@ def payment_exceptions(request):
         status__in=['Failed', 'Processing']
     ).order_by('-created_at')
     serializer = PaymentSerializer(exceptions, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+# --- Customer-specific Payments ---
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def customer_payments(request, pk):
+    payments = Payment.objects.filter(customer_id=pk)
+    serializer = PaymentSerializer(payments, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)

@@ -11,6 +11,7 @@ from core.models import Customer, Vendor
 from .serializers import CustomerSerializer, VendorSerializer, LedgerEntrySerializer
 
 
+
 # ── Helper: Customer Ledger rows ──────────────────────────────────────────────
 def build_ledger_rows(customer, from_date=None, to_date=None):
     invoice_qs = Invoice.objects.filter(customer=customer)
@@ -19,7 +20,7 @@ def build_ledger_rows(customer, from_date=None, to_date=None):
     if from_date:
         invoice_qs = invoice_qs.filter(date__gte=from_date)
         receipt_qs = receipt_qs.filter(date__gte=from_date)
-    if to_date:
+    if to_date: 
         invoice_qs = invoice_qs.filter(date__lte=to_date)
         receipt_qs = receipt_qs.filter(date__lte=to_date)
 
@@ -247,3 +248,18 @@ def supplier_ledger_stats(request):
         "total_credits":   total_credits,
         "closing_balance": closing_balance,
     }, status=status.HTTP_200_OK)
+
+# mapping API for customer invoices
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def customer_ledgers(request, pk):
+    from django.shortcuts import get_object_or_404
+    from core.models import Customer as CoreCustomer
+    customer  = get_object_or_404(CoreCustomer, pk=pk)
+    from_date = request.query_params.get('from', '').strip() or None
+    to_date   = request.query_params.get('to', '').strip()   or None
+    rows      = build_ledger_rows(customer, from_date, to_date)
+    serializer = LedgerEntrySerializer(rows, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

@@ -1,3 +1,5 @@
+from dataclasses import fields
+
 from rest_framework import serializers
 from .models import Invoice, InvoiceItem
 
@@ -5,7 +7,17 @@ from .models import Invoice, InvoiceItem
 class InvoiceItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = InvoiceItem
-        exclude = ['invoice']   
+        fields = [
+            #  'id',        
+            'item_name',
+            'description',
+            'quantity',
+            'unit',
+            'rate',
+            'discount',
+            'tax_rate',
+            'total',
+        ]
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
@@ -13,7 +25,28 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invoice
-        fields = '__all__'
+        fields = [
+            'invoice_id',
+            'items',
+            'invoice_type',
+            'invoice_date',
+            'due_date',
+            'sub_total',
+            'total_tax',
+            'cgst',
+            'sgst',
+            'igst',
+            'discount',
+            'total_amount',
+            'paid_amount',
+            'total_due',
+            'notes',
+            'terms_conditions',
+            'digital_signature',
+            'status',
+            'created_at',
+            'customer',
+        ] 
 
     def create(self, validated_data):
         items_data = validated_data.pop('items')

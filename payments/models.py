@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import Customer
+from core.models import Customer, Vendor
 
 
 class Payment(models.Model):
@@ -37,14 +37,15 @@ class Payment(models.Model):
     ]
 
     receipt_number      = models.CharField(max_length=50, unique=True, editable=False)
-    customer            = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    customer = models.ForeignKey('core.Customer', on_delete=models.CASCADE, related_name='payments', null=True, blank=True)
+    vendor = models.ForeignKey('core.Vendor', on_delete=models.CASCADE, related_name='payments', null=True, blank=True)
     date                = models.DateField()
     payment_mode        = models.CharField(max_length=20, choices=PAYMENT_MODE_CHOICES)
     amount              = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     gateway_status      = models.CharField(max_length=20, choices=GATEWAY_STATUS_CHOICES, default='Initiated')
     allocation_status   = models.CharField(max_length=30, choices=ALLOCATION_STATUS_CHOICES, default='Unallocated')
     status              = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Unapplied')
-    invoice_allocation  = models.TextField(blank=True)   # e.g. INV-240201 (₹9,200) - Advance ₹800
+    invoice_allocation  = models.TextField(blank=True)   # e.g. INV-240201 (â‚¹9,200) - Advance â‚¹800
     advance_amount      = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     notes               = models.TextField(blank=True)
     created_at          = models.DateTimeField(auto_now_add=True)

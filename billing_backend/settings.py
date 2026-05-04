@@ -1,6 +1,4 @@
-"""
-Django settings for billing_backend project.
-"""
+
 
 from pathlib import Path
 from datetime import timedelta
@@ -23,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third-party
+    # Apps.
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -55,6 +53,7 @@ INSTALLED_APPS = [
     'itc_reconciliation',
     'gst_report',
     'sales_reports',
+    'purchase_report',
 
     
     
